@@ -51,6 +51,11 @@ namespace CoordGenTest
 			return (short)numPaddy.Value;
 		}
 
+		private float GetScale()
+		{
+			return (float)numScale.Value;
+		}
+
 		private PolyType GetPolyType()
 		{
 			PolyType type = 0;
@@ -78,7 +83,7 @@ namespace CoordGenTest
 		{
 			List<Polygon> polys = new List<Polygon>();
 
-			var p = Polygon.Create(GetOffset(), GetEulers(), 1);
+			var p = Polygon.Create(GetOffset(), GetEulers(), GetScale());
 			InitPoly(p);
 			polys.Add(p);
 
@@ -89,7 +94,63 @@ namespace CoordGenTest
 		{
 			List<Polygon> polys = new List<Polygon>();
 
+			var offset = GetOffset();
+			var eulers = GetEulers();
+			var scale = GetScale();
 
+			var top = Polygon.Create(offset + Vector<float>.Build.Dense(new float[] { 0, 0.5f, 0 }), eulers, scale);
+			var bottom = Polygon.Create(offset + Vector<float>.Build.Dense(new float[] { 0, -0.5f, 0 }),
+				eulers + Vector<float>.Build.Dense(new float[] {180,0,0 }), scale);
+			var left = Polygon.Create(offset + Vector<float>.Build.Dense(new float[] { -0.5f, 0, 0 }),
+				eulers + Vector<float>.Build.Dense(new float[] { 0, 0, 90 }), scale);
+			var right = Polygon.Create(offset + Vector<float>.Build.Dense(new float[] { 0.5f, 0, 0 }),
+				eulers + Vector<float>.Build.Dense(new float[] { 0, 0, -90 }), scale);
+			var front = Polygon.Create(offset + Vector<float>.Build.Dense(new float[] { 0, 0, -0.5f }),
+				eulers + Vector<float>.Build.Dense(new float[] { -90, 0, 0 }), scale);
+			var back = Polygon.Create(offset + Vector<float>.Build.Dense(new float[] { 0, 0, 0.5f }),
+				eulers + Vector<float>.Build.Dense(new float[] { 90, 0, 0 }), scale);
+
+			polys.Add(top);
+			polys.Add(bottom);
+			polys.Add(left);
+			polys.Add(right);
+			polys.Add(front);
+			polys.Add(back);
+
+			foreach (var p in polys)
+			{
+				InitPoly(p);
+			}
+
+			return polys.ToArray();
+		}
+
+		private Polygon[] createCorridor()
+		{
+			List<Polygon> polys = new List<Polygon>();
+
+			var offset = GetOffset();
+			var eulers = GetEulers();
+			var scale = GetScale();
+
+			
+			var top = Polygon.Create(offset + Vector<float>.Build.Dense(new float[] { 0, 0.5f, 0 }),
+				eulers + Vector<float>.Build.Dense(new float[] { 180, 0, 0 }), scale);
+			var bottom = Polygon.Create(offset + Vector<float>.Build.Dense(new float[] { 0, -0.5f, 0 }), eulers, scale);
+			var left = Polygon.Create(offset + Vector<float>.Build.Dense(new float[] { -0.5f, 0, 0 }),
+				eulers + Vector<float>.Build.Dense(new float[] { 0, 0, -90 }), scale);
+			var right = Polygon.Create(offset + Vector<float>.Build.Dense(new float[] { 0.5f, 0, 0 }),
+				eulers + Vector<float>.Build.Dense(new float[] { 0, 0, 90 }), scale);
+			
+			polys.Add(top);
+			polys.Add(bottom);
+			polys.Add(left);
+			polys.Add(right);
+
+			foreach (var p in polys)
+			{
+				InitPoly(p);
+			}
 
 			return polys.ToArray();
 		}
@@ -103,11 +164,11 @@ namespace CoordGenTest
 			}
 			else if (radCube.Checked)
 			{
-
+				output = createCube();
 			}
 			else if (radCorridor.Checked)
 			{
-
+				output = createCorridor();
 			}
 
 			txtOut.Text = JsonConvert.SerializeObject(output, Formatting.Indented);

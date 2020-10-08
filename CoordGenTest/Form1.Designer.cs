@@ -55,6 +55,8 @@ namespace CoordGenTest
             this.numPaddy = new System.Windows.Forms.NumericUpDown();
             this.lstType = new System.Windows.Forms.CheckedListBox();
             this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.numScale = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.numX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numZ)).BeginInit();
@@ -65,6 +67,7 @@ namespace CoordGenTest
             ((System.ComponentModel.ISupportInitialize)(this.numTransval)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numRoom)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPaddy)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numScale)).BeginInit();
             this.SuspendLayout();
             // 
             // radPlane
@@ -424,11 +427,50 @@ namespace CoordGenTest
             this.label9.TabIndex = 26;
             this.label9.Text = "Type:";
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(507, 17);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(37, 13);
+            this.label10.TabIndex = 27;
+            this.label10.Text = "Scale:";
+            // 
+            // numScale
+            // 
+            this.numScale.DecimalPlaces = 5;
+            this.numScale.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.numScale.Location = new System.Drawing.Point(557, 15);
+            this.numScale.Maximum = new decimal(new int[] {
+            1410065408,
+            2,
+            0,
+            0});
+            this.numScale.Minimum = new decimal(new int[] {
+            1215752192,
+            23,
+            0,
+            -2147483648});
+            this.numScale.Name = "numScale";
+            this.numScale.Size = new System.Drawing.Size(120, 20);
+            this.numScale.TabIndex = 28;
+            this.numScale.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.numScale);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.lstType);
             this.Controls.Add(this.numPaddy);
@@ -469,6 +511,7 @@ namespace CoordGenTest
             ((System.ComponentModel.ISupportInitialize)(this.numTransval)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numRoom)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPaddy)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numScale)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -503,6 +546,8 @@ namespace CoordGenTest
 		private System.Windows.Forms.NumericUpDown numPaddy;
 		private System.Windows.Forms.CheckedListBox lstType;
 		private System.Windows.Forms.Label label9;
+		private System.Windows.Forms.Label label10;
+		private System.Windows.Forms.NumericUpDown numScale;
 	}
 }
 
