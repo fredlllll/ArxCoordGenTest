@@ -57,6 +57,7 @@ namespace CoordGenTest
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.numScale = new System.Windows.Forms.NumericUpDown();
+            this.chkPretty = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.numX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numZ)).BeginInit();
@@ -464,11 +465,24 @@ namespace CoordGenTest
             0,
             0});
             // 
+            // chkPretty
+            // 
+            this.chkPretty.AutoSize = true;
+            this.chkPretty.Checked = true;
+            this.chkPretty.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkPretty.Location = new System.Drawing.Point(697, 45);
+            this.chkPretty.Name = "chkPretty";
+            this.chkPretty.Size = new System.Drawing.Size(78, 17);
+            this.chkPretty.TabIndex = 29;
+            this.chkPretty.Text = "Pretty Json";
+            this.chkPretty.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.chkPretty);
             this.Controls.Add(this.numScale);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
@@ -548,6 +562,7 @@ namespace CoordGenTest
 		private System.Windows.Forms.Label label9;
 		private System.Windows.Forms.Label label10;
 		private System.Windows.Forms.NumericUpDown numScale;
+		private System.Windows.Forms.CheckBox chkPretty;
 	}
 }
 

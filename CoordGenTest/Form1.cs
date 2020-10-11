@@ -63,7 +63,6 @@ namespace CoordGenTest
 			foreach (var v in lstType.CheckedItems)
 			{
 				var tmp = (PolyType)Enum.Parse(typeof(PolyType), v.ToString());
-				MessageBox.Show(tmp.ToString());
 				type |= tmp;
 			}
 
@@ -100,7 +99,7 @@ namespace CoordGenTest
 
 			var top = Polygon.Create(offset + Vector<float>.Build.Dense(new float[] { 0, 0.5f, 0 }), eulers, scale);
 			var bottom = Polygon.Create(offset + Vector<float>.Build.Dense(new float[] { 0, -0.5f, 0 }),
-				eulers + Vector<float>.Build.Dense(new float[] {180,0,0 }), scale);
+				eulers + Vector<float>.Build.Dense(new float[] { 180, 0, 0 }), scale);
 			var left = Polygon.Create(offset + Vector<float>.Build.Dense(new float[] { -0.5f, 0, 0 }),
 				eulers + Vector<float>.Build.Dense(new float[] { 0, 0, 90 }), scale);
 			var right = Polygon.Create(offset + Vector<float>.Build.Dense(new float[] { 0.5f, 0, 0 }),
@@ -133,7 +132,7 @@ namespace CoordGenTest
 			var eulers = GetEulers();
 			var scale = GetScale();
 
-			
+
 			var top = Polygon.Create(offset + Vector<float>.Build.Dense(new float[] { 0, 0.5f, 0 }),
 				eulers + Vector<float>.Build.Dense(new float[] { 180, 0, 0 }), scale);
 			var bottom = Polygon.Create(offset + Vector<float>.Build.Dense(new float[] { 0, -0.5f, 0 }), eulers, scale);
@@ -141,7 +140,7 @@ namespace CoordGenTest
 				eulers + Vector<float>.Build.Dense(new float[] { 0, 0, -90 }), scale);
 			var right = Polygon.Create(offset + Vector<float>.Build.Dense(new float[] { 0.5f, 0, 0 }),
 				eulers + Vector<float>.Build.Dense(new float[] { 0, 0, 90 }), scale);
-			
+
 			polys.Add(top);
 			polys.Add(bottom);
 			polys.Add(left);
@@ -171,7 +170,21 @@ namespace CoordGenTest
 				output = createCorridor();
 			}
 
-			txtOut.Text = JsonConvert.SerializeObject(output, Formatting.Indented);
+			txtOut.Text = JsonConvert.SerializeObject(output, chkPretty.Checked ? Formatting.Indented : Formatting.None);
+		}
+
+		void SetPolyType(PolyType type)
+		{
+			for (int i = 0; i < lstType.Items.Count; i++)
+			{
+				var v = lstType.Items[i];
+				lstType.SetItemChecked(i, false);
+				var itemPolyType = (PolyType)Enum.Parse(typeof(PolyType), v.ToString());
+				if (type.HasFlag(itemPolyType))
+				{
+					lstType.SetItemChecked(i, true);
+				}
+			}
 		}
 
 		private void Form1_Load(object sender, EventArgs e)
@@ -182,6 +195,8 @@ namespace CoordGenTest
 				string s = v.ToString();
 				lstType.Items.Add(s);
 			}
+
+			SetPolyType(PolyType.QUAD | PolyType.NO_SHADOW);
 		}
 	}
 }
