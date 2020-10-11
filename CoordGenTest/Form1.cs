@@ -63,7 +63,6 @@ namespace CoordGenTest
 			foreach (var v in lstType.CheckedItems)
 			{
 				var tmp = (PolyType)Enum.Parse(typeof(PolyType), v.ToString());
-				MessageBox.Show(tmp.ToString());
 				type |= tmp;
 			}
 
