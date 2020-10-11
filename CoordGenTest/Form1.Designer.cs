@@ -323,13 +323,13 @@ namespace CoordGenTest
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(16, 91);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(28, 13);
+            this.label4.Size = new System.Drawing.Size(60, 13);
             this.label4.TabIndex = 17;
-            this.label4.Text = "Tex:";
+            this.label4.Text = "Texture ID:";
             // 
             // numTex
             // 
-            this.numTex.Location = new System.Drawing.Point(50, 89);
+            this.numTex.Location = new System.Drawing.Point(75, 89);
             this.numTex.Maximum = new decimal(new int[] {
             1215752192,
             23,
@@ -342,7 +342,7 @@ namespace CoordGenTest
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(162, 91);
+            this.label5.Location = new System.Drawing.Point(187, 91);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(51, 13);
             this.label5.TabIndex = 19;
@@ -356,7 +356,7 @@ namespace CoordGenTest
             0,
             0,
             65536});
-            this.numTransval.Location = new System.Drawing.Point(219, 89);
+            this.numTransval.Location = new System.Drawing.Point(244, 89);
             this.numTransval.Minimum = new decimal(new int[] {
             100,
             0,
@@ -368,20 +368,30 @@ namespace CoordGenTest
             // 
             // numRoom
             // 
-            this.numRoom.Location = new System.Drawing.Point(375, 89);
+            this.numRoom.Location = new System.Drawing.Point(402, 89);
             this.numRoom.Maximum = new decimal(new int[] {
             1215752192,
             23,
             0,
             0});
+            this.numRoom.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.numRoom.Name = "numRoom";
             this.numRoom.Size = new System.Drawing.Size(106, 20);
             this.numRoom.TabIndex = 22;
+            this.numRoom.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(331, 91);
+            this.label7.Location = new System.Drawing.Point(358, 91);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(38, 13);
             this.label7.TabIndex = 21;
@@ -390,7 +400,7 @@ namespace CoordGenTest
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(487, 91);
+            this.label8.Location = new System.Drawing.Point(525, 91);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(40, 13);
             this.label8.TabIndex = 23;
@@ -398,7 +408,7 @@ namespace CoordGenTest
             // 
             // numPaddy
             // 
-            this.numPaddy.Location = new System.Drawing.Point(533, 89);
+            this.numPaddy.Location = new System.Drawing.Point(571, 89);
             this.numPaddy.Maximum = new decimal(new int[] {
             1215752192,
             23,
@@ -412,6 +422,7 @@ namespace CoordGenTest
             // 
             this.lstType.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.lstType.CheckOnClick = true;
             this.lstType.FormattingEnabled = true;
             this.lstType.Location = new System.Drawing.Point(12, 138);
             this.lstType.Name = "lstType";
@@ -430,11 +441,11 @@ namespace CoordGenTest
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(507, 17);
+            this.label10.Location = new System.Drawing.Point(521, 17);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(37, 13);
+            this.label10.Size = new System.Drawing.Size(30, 13);
             this.label10.TabIndex = 27;
-            this.label10.Text = "Scale:";
+            this.label10.Text = "Size:";
             // 
             // numScale
             // 
