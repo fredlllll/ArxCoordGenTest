@@ -1,5 +1,6 @@
 using MathNet.Numerics.LinearAlgebra;
 using MathNet.Numerics.Providers.LinearAlgebra;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace CoordGenTest
@@ -17,7 +18,7 @@ namespace CoordGenTest
 		public short room;
 		public short paddy;
 
-		public static Polygon Create(Vector<float> center, Vector<float> eulers, float scale)
+		public static Polygon Create(Vector<float> center, Vector<float> eulers, float scale, ArxColor color)
 		{
 			Polygon p = new Polygon();
 
@@ -39,10 +40,10 @@ namespace CoordGenTest
 			c += center;
 			d += center;
 
-			p.vertices[0] = new Vertex(a, 0, 0);
-			p.vertices[1] = new Vertex(b, 1, 0);
-			p.vertices[2] = new Vertex(c, 0, 1);
-			p.vertices[3] = new Vertex(d, 1, 1);
+			p.vertices[0] = new Vertex(a, 0, 0, color);
+			p.vertices[1] = new Vertex(b, 1, 0, color);
+			p.vertices[2] = new Vertex(c, 0, 1, color);
+			p.vertices[3] = new Vertex(d, 1, 1, color);
 
 			var n = Vector<float>.Build.Dense(new float[] { 0, 1, 0 });
 			n *= m;
@@ -57,7 +58,7 @@ namespace CoordGenTest
 
 			p.type = PolyType.QUAD;
 
-			p.area = scale*scale;
+			p.area = scale * scale;
 			return p;
 		}
 	}

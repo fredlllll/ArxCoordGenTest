@@ -58,6 +58,8 @@ namespace CoordGenTest
             this.label10 = new System.Windows.Forms.Label();
             this.numScale = new System.Windows.Forms.NumericUpDown();
             this.chkPretty = new System.Windows.Forms.CheckBox();
+            this.btnPickColor = new System.Windows.Forms.Button();
+            this.colorDialog = new System.Windows.Forms.ColorDialog();
             ((System.ComponentModel.ISupportInitialize)(this.numX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numZ)).BeginInit();
@@ -378,6 +380,11 @@ namespace CoordGenTest
             this.numRoom.Name = "numRoom";
             this.numRoom.Size = new System.Drawing.Size(106, 20);
             this.numRoom.TabIndex = 22;
+            this.numRoom.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // label7
             // 
@@ -477,11 +484,32 @@ namespace CoordGenTest
             this.chkPretty.Text = "Pretty Json";
             this.chkPretty.UseVisualStyleBackColor = true;
             // 
+            // btnPickColor
+            // 
+            this.btnPickColor.BackColor = System.Drawing.Color.White;
+            this.btnPickColor.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnPickColor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPickColor.ForeColor = System.Drawing.Color.Black;
+            this.btnPickColor.Location = new System.Drawing.Point(510, 40);
+            this.btnPickColor.Name = "btnPickColor";
+            this.btnPickColor.Size = new System.Drawing.Size(75, 23);
+            this.btnPickColor.TabIndex = 31;
+            this.btnPickColor.Text = "Pick Color";
+            this.btnPickColor.UseVisualStyleBackColor = false;
+            this.btnPickColor.Click += new System.EventHandler(this.btnPickColor_Click);
+            // 
+            // colorDialog
+            // 
+            this.colorDialog.AnyColor = true;
+            this.colorDialog.Color = System.Drawing.Color.White;
+            this.colorDialog.FullOpen = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnPickColor);
             this.Controls.Add(this.chkPretty);
             this.Controls.Add(this.numScale);
             this.Controls.Add(this.label10);
@@ -563,6 +591,8 @@ namespace CoordGenTest
 		private System.Windows.Forms.Label label10;
 		private System.Windows.Forms.NumericUpDown numScale;
 		private System.Windows.Forms.CheckBox chkPretty;
+		private System.Windows.Forms.Button btnPickColor;
+		private System.Windows.Forms.ColorDialog colorDialog;
 	}
 }
 

@@ -1,3 +1,4 @@
+using MathNet.Numerics.Distributions;
 using MathNet.Numerics.LinearAlgebra;
 using MathNet.Spatial.Euclidean;
 using MathNet.Spatial.Units;
@@ -69,6 +70,12 @@ namespace CoordGenTest
 			return type;
 		}
 
+		private ArxColor GetColor()
+		{
+			var col = btnPickColor.BackColor;
+			return new ArxColor(col.R, col.G, col.B, col.A);
+		}
+
 		private void InitPoly(Polygon p)
 		{
 			p.tex = GetTex();
@@ -82,7 +89,7 @@ namespace CoordGenTest
 		{
 			List<Polygon> polys = new List<Polygon>();
 
-			var p = Polygon.Create(GetOffset(), GetEulers(), GetScale());
+			var p = Polygon.Create(GetOffset(), GetEulers(), GetScale(), GetColor());
 			InitPoly(p);
 			polys.Add(p);
 
@@ -97,17 +104,19 @@ namespace CoordGenTest
 			var eulers = GetEulers();
 			var scale = GetScale();
 
-			var top = Polygon.Create(offset + Vector<float>.Build.Dense(new float[] { 0, 0.5f, 0 }), eulers, scale);
+			var color = GetColor();
+
+			var top = Polygon.Create(offset + Vector<float>.Build.Dense(new float[] { 0, 0.5f, 0 }), eulers, scale, color);
 			var bottom = Polygon.Create(offset + Vector<float>.Build.Dense(new float[] { 0, -0.5f, 0 }),
-				eulers + Vector<float>.Build.Dense(new float[] { 180, 0, 0 }), scale);
+				eulers + Vector<float>.Build.Dense(new float[] { 180, 0, 0 }), scale, color);
 			var left = Polygon.Create(offset + Vector<float>.Build.Dense(new float[] { -0.5f, 0, 0 }),
-				eulers + Vector<float>.Build.Dense(new float[] { 0, 0, 90 }), scale);
+				eulers + Vector<float>.Build.Dense(new float[] { 0, 0, 90 }), scale, color);
 			var right = Polygon.Create(offset + Vector<float>.Build.Dense(new float[] { 0.5f, 0, 0 }),
-				eulers + Vector<float>.Build.Dense(new float[] { 0, 0, -90 }), scale);
+				eulers + Vector<float>.Build.Dense(new float[] { 0, 0, -90 }), scale, color);
 			var front = Polygon.Create(offset + Vector<float>.Build.Dense(new float[] { 0, 0, -0.5f }),
-				eulers + Vector<float>.Build.Dense(new float[] { -90, 0, 0 }), scale);
+				eulers + Vector<float>.Build.Dense(new float[] { -90, 0, 0 }), scale, color);
 			var back = Polygon.Create(offset + Vector<float>.Build.Dense(new float[] { 0, 0, 0.5f }),
-				eulers + Vector<float>.Build.Dense(new float[] { 90, 0, 0 }), scale);
+				eulers + Vector<float>.Build.Dense(new float[] { 90, 0, 0 }), scale, color);
 
 			polys.Add(top);
 			polys.Add(bottom);
@@ -131,15 +140,15 @@ namespace CoordGenTest
 			var offset = GetOffset();
 			var eulers = GetEulers();
 			var scale = GetScale();
-
+			var color = GetColor();
 
 			var top = Polygon.Create(offset + Vector<float>.Build.Dense(new float[] { 0, 0.5f, 0 }),
-				eulers + Vector<float>.Build.Dense(new float[] { 180, 0, 0 }), scale);
-			var bottom = Polygon.Create(offset + Vector<float>.Build.Dense(new float[] { 0, -0.5f, 0 }), eulers, scale);
+				eulers + Vector<float>.Build.Dense(new float[] { 180, 0, 0 }), scale, color);
+			var bottom = Polygon.Create(offset + Vector<float>.Build.Dense(new float[] { 0, -0.5f, 0 }), eulers, scale, color);
 			var left = Polygon.Create(offset + Vector<float>.Build.Dense(new float[] { -0.5f, 0, 0 }),
-				eulers + Vector<float>.Build.Dense(new float[] { 0, 0, -90 }), scale);
+				eulers + Vector<float>.Build.Dense(new float[] { 0, 0, -90 }), scale, color);
 			var right = Polygon.Create(offset + Vector<float>.Build.Dense(new float[] { 0.5f, 0, 0 }),
-				eulers + Vector<float>.Build.Dense(new float[] { 0, 0, 90 }), scale);
+				eulers + Vector<float>.Build.Dense(new float[] { 0, 0, 90 }), scale, color);
 
 			polys.Add(top);
 			polys.Add(bottom);
@@ -197,6 +206,15 @@ namespace CoordGenTest
 			}
 
 			SetPolyType(PolyType.QUAD | PolyType.NO_SHADOW);
+		}
+
+		private void btnPickColor_Click(object sender, EventArgs e)
+		{
+			if (colorDialog.ShowDialog() == DialogResult.OK)
+			{
+				btnPickColor.BackColor = colorDialog.Color;
+				btnPickColor.ForeColor = colorDialog.Color.GetBrightness() > 0.5f ? Color.Black : Color.White;
+			}
 		}
 	}
 }
