@@ -106,9 +106,9 @@ namespace CoordGenTest
 
 			var color = GetColor();
 
-			var top = Polygon.Create(offset + Vector<float>.Build.Dense(new float[] { 0, 0.5f * scale, 0 }), eulers, scale, color);
-			var bottom = Polygon.Create(offset + Vector<float>.Build.Dense(new float[] { 0, -0.5f * scale, 0 }),
+			var top = Polygon.Create(offset + Vector<float>.Build.Dense(new float[] { 0, 0.5f * scale, 0 }),
 				eulers + Vector<float>.Build.Dense(new float[] { 180, 0, 0 }), scale, color);
+			var bottom = Polygon.Create(offset + Vector<float>.Build.Dense(new float[] { 0, -0.5f * scale, 0 }), eulers, scale, color);
 			var left = Polygon.Create(offset + Vector<float>.Build.Dense(new float[] { -0.5f * scale, 0, 0 }),
 				eulers + Vector<float>.Build.Dense(new float[] { 0, 0, 90 }), scale, color);
 			var right = Polygon.Create(offset + Vector<float>.Build.Dense(new float[] { 0.5f * scale, 0, 0 }),
@@ -142,9 +142,9 @@ namespace CoordGenTest
 			var scale = GetScale();
 			var color = GetColor();
 
-			var top = Polygon.Create(offset + Vector<float>.Build.Dense(new float[] { 0, 0.5f * scale, 0 }),
+			var top = Polygon.Create(offset + Vector<float>.Build.Dense(new float[] { 0, 0.5f * scale, 0 }), eulers, scale, color);
+			var bottom = Polygon.Create(offset + Vector<float>.Build.Dense(new float[] { 0, -0.5f * scale, 0 }),
 				eulers + Vector<float>.Build.Dense(new float[] { 180, 0, 0 }), scale, color);
-			var bottom = Polygon.Create(offset + Vector<float>.Build.Dense(new float[] { 0, -0.5f * scale, 0 }), eulers, scale, color);
 			var left = Polygon.Create(offset + Vector<float>.Build.Dense(new float[] { -0.5f * scale, 0, 0 }),
 				eulers + Vector<float>.Build.Dense(new float[] { 0, 0, -90 }), scale, color);
 			var right = Polygon.Create(offset + Vector<float>.Build.Dense(new float[] { 0.5f * scale, 0, 0 }),

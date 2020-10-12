@@ -14,8 +14,8 @@ namespace CoordGenTest
 		public static Matrix<float> CreateRotationMatrix(float x,float y, float z)
 		{
 			var rotX = Matrix3D.RotationAroundXAxis(Angle.FromDegrees(x)).ToSingle();
-			var rotY = Matrix3D.RotationAroundXAxis(Angle.FromDegrees(y)).ToSingle();
-			var rotZ = Matrix3D.RotationAroundXAxis(Angle.FromDegrees(z)).ToSingle();
+			var rotY = Matrix3D.RotationAroundYAxis(Angle.FromDegrees(y)).ToSingle();
+			var rotZ = Matrix3D.RotationAroundZAxis(Angle.FromDegrees(z)).ToSingle();
 
 			return rotX * rotY * rotZ;
 		}
